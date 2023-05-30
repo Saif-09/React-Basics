@@ -8,9 +8,13 @@
 
 
 
-/* REACT */
+/* REACT with JS*/
 
-const reactHeading = React.createElement("h1",{className: "head"},"Hello React!");
-console.log("React element:", reactHeading);
+// const reactHeading = React.createElement("h1",{className: "head"},"Hello React!");
+// console.log("React element:", reactHeading);
 
-ReactDOM.createRoot(document.getElementById("root")).render(reactHeading)
+/* REACT with JSX */
+
+const jsxHeading  = (<h1> Hello JSX </h1>)
+
+ReactDOM.createRoot(document.getElementById("root")).render(jsxHeading)
