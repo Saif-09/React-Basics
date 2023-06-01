@@ -17,14 +17,23 @@
 
 
 //This is the method of creating a component in react, naming convention of component should be like first letter will be capital
-  function App() {
-    return (
+
+function Name(){
+  return(
+    <>
+    <p>JSX is JavaScript XML</p>
+    </>
+  )
+}
+
+
+  const App = ()=>  (
       <>
         <h1 className="head">Hello JSX </h1>
         <p>This is created using JSX</p>
       </>
     )
-  }
+  
 
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+ReactDOM.createRoot(document.getElementById("root")).render(<><App/><Name/></>);//for using more than one component we give parent root then in that parent we give both components
