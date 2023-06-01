@@ -37,3 +37,10 @@ function Name(){
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(<><App/><Name/></>);//for using more than one component we give parent root then in that parent we give both components
+
+
+/* What is JSX ?
+
+   Javascript XML is a syntax extension to Javascript
+   
+*/
