@@ -15,6 +15,11 @@
 
 /* REACT with JSX */
 
-const jsxHeading  = (<h1> Hello JSX </h1>)
+const jsxHeading = (
+  <React.Fragment>
+    <h1 className="head">Hello JSX </h1>
+    <p>This is created using JSX</p>
+  </React.Fragment>
+);
 
-ReactDOM.createRoot(document.getElementById("root")).render(jsxHeading)
+ReactDOM.createRoot(document.getElementById("root")).render(jsxHeading);
