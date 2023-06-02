@@ -21,34 +21,25 @@
         let score = 0;
         let wicket = 0;
         let ballWiseRun = [];
+        let hit = 0;
+        let inputRef = React.createRef();
 
         function addWicket() {
-            if (wicket < 10) {
-                ballWiseRun.push("w");
-                wicket = wicket + 1;
-                //it should be rendered again and again after an update in any component
-                rootElement.render(<App />);
-                console.log(ballWiseRun);
+            hit = "w";
+            //it should be rendered again and again after an update in any component
+            rootElement.render(<App />);
 
-            } else {
-                alert("Wicket Limit Reached");
-            }
 
         }
         function addScore(num) {
-            if (wicket < 10) {
-                ballWiseRun.push(num);
-                score = score + num;
-                //it should be rendered again and again after an update in any component
-                rootElement.render(<App />);
-                // alert(num + " is clicked")
-                console.log(ballWiseRun);
-            }
-            else {
-                alert("Wicket Limit Reached");
-            }
+            hit = num;
+            //it should be rendered again and again after an update in any component
+            rootElement.render(<App />);
 
         }
+
+
+
         //by using inline functions in button we can pass arguments to the function
 
         const ScoreButtons = () => {
@@ -78,35 +69,55 @@
                         <span>{res === 0 ? <strong>.</strong> : res}</span>&nbsp;&nbsp;</>))}
             </div>
         )
-        
+
         //This function is used for preventing by default work of submit button and it is called Synthetic event
-        function handleSubmit(event){
-            event.preventDefault();
-        }
+        function handleSubmit(event) {
+                event.preventDefault();
+
+                if (hit == "w") {
+                    wicket += 1;
+                } else {
+                    score += hit;
+                }
+
+                // inputRef.current.value gives the value of what we write in input box
+
+                ballWiseRun.unshift(
+                    <span>{hit}{"," }{inputRef.current.value}</span>
+                );
+                hit = 0;
+                inputRef.current.value = "";
+
+                rootElement.render(<App />);
+            }
 
         const Form = () => (
-                <form onSubmit = {handleSubmit}>
-                    <input />
-                    <input />
-                    <button type="submit">Submit</button>
+            <form onSubmit={handleSubmit}>
+                <input value={hit} />
+                <input ref = {inputRef} placeholder="Add a Comment"/>
+                <button type="submit">Submit</button>
 
-                </form>
-            )
+            </form>
+        )
 
 
         const App = () => (
-            <>
-                <h1>Score Keeper</h1>
-                <h2>Score: {score}/{wicket}</h2>
-                <ScoreButtons />
-                <br/>
-               
-                <Form/>
-                <hr/>
+                <>
+                    <h1>Score Keeper</h1>
+                    <h2>Score: {score}/{wicket}</h2>
+                    <ScoreButtons />
+                    <br />
+
+                    <Form />
+                    <hr />
+
+                    {ballWiseRun.map((res, index) => (
+                        <p key={index}>{res}</p>
+                    ))}
 
                 /* when we have to use event handling we will  not call the function we have to just pass the function name  */
-            </>
-        )
+                </>
+            )
 
 
 
