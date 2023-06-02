@@ -33,10 +33,47 @@
         )
     }
 
+    //With the details of students in an array create and render it in a table form 
+    function Stud() {
+            let students = [
+                { name: "John", age: 20, city: "New York" },
+                { name: "Mary", age: 25, city: "London" },
+                { name: "Peter", age: 30, city: "Paris" },
+                { name: "Joe", age: 35, city: "Berlin" },
+            ];
+            return (
+                <>
+                    <h1>List of Students</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>City</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {students.map((student, index) => (
+                                <tr key={index}>
+                                    <td>{student.name}</td>
+                                    <td>{student.age}</td>
+                                    <td>{student.city}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </>
+            )
+
+
+
+
+        }
+
 
 
    const rootElement = ReactDOM.createRoot(document.getElementById("root"))
-   rootElement.render(<App/>);
+   rootElement.render(<><App/><Stud/></>);
 
     </script>
 </body>
