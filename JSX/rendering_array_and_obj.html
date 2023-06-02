@@ -17,29 +17,21 @@
 
     <script  type="text/babel">
 
-function App(){
-    let arr = [1,2,3,4];
+    function App() {
 
-    let obj = {
-        name: "Alexa",
-        age: 10
+        let cars = ["BMW", "Audi", "Nexon", "Honda"];
 
+        return (
+            <>
+                <h1>List of Cars</h1>
+                <ul>
+                    {cars.map((car, index) => <li key={index}>{car}</li>)}
+                </ul>
+
+
+            </>
+        )
     }
-    return(
-        <>
-        <h1>Arrays and objects in JSX</h1>
-        //for printing the array line wise on the output
-        {arr.map((num)=> <h2>{num}</h2>)}
-        <h2>{arr}</h2>// array can be rendered in JSX directly
-
-        <h2>{obj.name}</h2>
-        // object can't be rendered directly
-        //object properties can be used in rendering in jsx like this
-        
-
-        </>
-    )
-  }
 
 
 
