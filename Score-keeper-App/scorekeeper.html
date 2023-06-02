@@ -20,12 +20,16 @@
 
         let score = 0;
         let wicket = 0;
+        let ballWiseRun = [];
 
         function addWicket() {
             if (wicket < 10) {
+                ballWiseRun.push("w");
                 wicket = wicket + 1;
                 //it should be rendered again and again after an update in any component
                 rootElement.render(<App />);
+                console.log(ballWiseRun);
+
             } else {
                 alert("Wicket Limit Reached");
             }
@@ -33,10 +37,12 @@
         }
         function addScore(num) {
             if (wicket < 10) {
+                ballWiseRun.push(num);
                 score = score + num;
                 //it should be rendered again and again after an update in any component
                 rootElement.render(<App />);
                 // alert(num + " is clicked")
+                console.log(ballWiseRun);
             }
             else {
                 alert("Wicket Limit Reached");
@@ -63,11 +69,23 @@
             )
         }
 
+        const Result = ()=>
+            (
+                <div>
+                    {ballWiseRun.map((res, index)=>(
+                        <>
+                        {index%6 ===0?<br/>:null}
+                        <span>{res === 0? <strong>.</strong>: res}</span>&nbsp;&nbsp;</>))}
+                </div>
+            )
+        
+
         const App = () => (
             <>
                 <h1>Score Keeper</h1>
                 <h2>Score: {score}/{wicket}</h2>
                 <ScoreButtons />
+                <Result />
                 
                 /* when we have to use event handling we will  not call the function we have to just pass the function name  */
             </>
