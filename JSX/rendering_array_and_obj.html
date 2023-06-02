@@ -19,15 +19,12 @@
 
     function App() {
 
-        let cars = ["BMW", "Audi", "Nexon", "Honda"];
+       let loggedIn = true;
 
         return (
             <>
-                <h1>List of Cars</h1>
-                <ul>
-                    {cars.map((car, index) => <li key={index}>{car}</li>)}
-                </ul>
-
+            //Using the ternery operator
+                <h1>Hello {loggedIn?"Saif":"Alexa"}</h1>
 
             </>
         )
