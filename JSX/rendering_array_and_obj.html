@@ -19,12 +19,13 @@
 
     function App() {
 
-       let loggedIn = true;
+       let loggedIn = false;
 
         return (
             <>
             //Using the ternery operator
                 <h1>Hello {loggedIn?"Saif":"Alexa"}</h1>
+                {loggedIn && <h2>Welcome to the portal</h2>}
 
                 //Important: Anything except 0, null, "",undefined, false are considered true in JavaScript
 
