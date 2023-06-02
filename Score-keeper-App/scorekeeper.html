@@ -51,42 +51,59 @@
         }
         //by using inline functions in button we can pass arguments to the function
 
-        const ScoreButtons = ()=>{
+        const ScoreButtons = () => {
             return (
                 <>
-                <div>
-                    <button onClick={() => addScore(0)}>0</button>
-                    <button onClick={() => addScore(1)}>1</button>
-                    <button onClick={() => addScore(2)}>2</button>
-                    <button onClick={() => addScore(3)}>3</button>
-                    <button onClick={() => addScore(4)}>4</button>
-                    <button onClick={() => addScore(5)}>5</button>
-                    <button onClick={() => addScore(6)}>6</button>
-                    <button onClick={addWicket}>Wicket</button>
-                </div>
-                
+                    <div>
+                        <button onClick={() => addScore(0)}>0</button>
+                        <button onClick={() => addScore(1)}>1</button>
+                        <button onClick={() => addScore(2)}>2</button>
+                        <button onClick={() => addScore(3)}>3</button>
+                        <button onClick={() => addScore(4)}>4</button>
+                        <button onClick={() => addScore(5)}>5</button>
+                        <button onClick={() => addScore(6)}>6</button>
+                        <button onClick={addWicket}>Wicket</button>
+                    </div>
+
                 </>
             )
         }
 
-        const Result = ()=>
-            (
-                <div>
-                    {ballWiseRun.map((res, index)=>(
-                        <>
-                        {index%6 ===0?<br/>:null}
-                        <span>{res === 0? <strong>.</strong>: res}</span>&nbsp;&nbsp;</>))}
-                </div>
-            )
+        const Result = () =>
+        (
+            <div>
+                {ballWiseRun.map((res, index) => (
+                    <>
+                        {index % 6 === 0 ? <br /> : null}
+                        <span>{res === 0 ? <strong>.</strong> : res}</span>&nbsp;&nbsp;</>))}
+            </div>
+        )
         
+        //This function is used for preventing by default work of submit button and it is called Synthetic event
+        function handleSubmit(event){
+            event.preventDefault();
+        }
+
+        const Form = () => (
+                <form onSubmit = {handleSubmit}>
+                    <input />
+                    <input />
+                    <button type="submit">Submit</button>
+
+                </form>
+            )
+
 
         const App = () => (
             <>
                 <h1>Score Keeper</h1>
                 <h2>Score: {score}/{wicket}</h2>
                 <ScoreButtons />
-                <Result />
-                
+                <br/>
+               
+                <Form/>
+                <hr/>
+
                 /* when we have to use event handling we will  not call the function we have to just pass the function name  */
             </>
         )
