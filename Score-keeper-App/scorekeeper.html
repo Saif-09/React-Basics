@@ -21,17 +21,26 @@
         let score = 0;
         let wicket = 0;
 
-        function addWicket(num){
-            wicket= wicket + num;
+        function addWicket(){
+            if(wicket<10){
+            wicket= wicket + 1;
             //it should be rendered again and again after an update in any component
             rootElement.render(<App />);
+            }else{
+                alert("Wicket Limit Reached");
+            }
             
         }
         function addScore(num){
+            if(wicket<10){
             score = score + num;
             //it should be rendered again and again after an update in any component
             rootElement.render(<App />);
             // alert(num + " is clicked")
+            }
+            else{
+                alert("Wicket Limit Reached");
+            }
 
         }
         //by using inline functions in button we can pass arguments to the function
@@ -48,7 +57,7 @@
                     <button onClick = {()=>addScore(4)}>4</button>
                     <button onClick = {()=>addScore(5)}>5</button>
                     <button onClick = {()=>addScore(6)}>6</button>
-                    <button onClick = {()=>addWicket(1)}>Wicket</button>
+                    <button onClick = {addWicket}>Wicket</button>
                 </div>
                 /* when we have to use event handling we will  not call the function we have to just pass the function name  */
             </>
